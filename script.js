@@ -35,7 +35,6 @@ image.setAttribute("src", imageArray[0]);
 window.onload = () => ShowPopupNbKids();
     
 btnChoose.addEventListener("click", () => Start())
-popup.addEventListener("click", () => ShowPopup())
     
 
 function generatePicture(){
@@ -155,9 +154,11 @@ function ShowPopupNbKids(){
         confirmButtonText: 'Valider',
         showLoaderOnConfirm: true
       }).then((result) => {
-        if (result.value) {
+        if (result.value > 0) {
             console.log("Max par équipe " + result.value);
             nbkids = result.value;
+        }else{
+            ShowPopupNbKids()
         }
     });
 }
